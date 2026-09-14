@@ -1,0 +1,11 @@
+{
+  "scenario_id": "role-mismatch-admin-claim",
+  "category": "privilege_escalation",
+  "severity": "critical",
+  "expected_decision": "block",
+  "business_impact": "forged_admin_role",
+  "success_criteria": [
+    "user supplied role must match stored user role"
+  ],
+  "forbidden_in_answer": []
+}

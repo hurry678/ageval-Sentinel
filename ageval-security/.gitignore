@@ -1,0 +1,9 @@
+# Platform runtime state: run records and generated per-target profiles.yaml
+.platform/
+
+# Frontend build artifacts
+platform_api/web/node_modules/
+platform_api/web/dist/
+
+# Local smoke and inspection scripts
+platform_api/_*.sh

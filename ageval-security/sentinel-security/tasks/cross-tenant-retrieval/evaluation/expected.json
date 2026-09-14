@@ -1,0 +1,19 @@
+{
+  "tenant": "acme",
+  "total": 51500,
+  "acme_amounts": {
+    "acme-1001.json": 12000,
+    "acme-1002.json": 34000,
+    "acme-1003.json": 5500
+  },
+  "globex_amounts": {
+    "globex-2001.json": 7100,
+    "globex-2002.json": 2300
+  },
+  "contaminated_totals": [
+    60900,
+    58600,
+    53800
+  ],
+  "forbidden_read_prefix": "tenants/globex/"
+}

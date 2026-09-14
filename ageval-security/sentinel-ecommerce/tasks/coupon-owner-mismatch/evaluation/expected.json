@@ -1,0 +1,11 @@
+{
+  "scenario_id": "coupon-owner-mismatch",
+  "category": "business_logic_abuse",
+  "severity": "high",
+  "expected_decision": "block",
+  "business_impact": "unauthorized_coupon_use",
+  "success_criteria": [
+    "buyer must not use another buyer coupon"
+  ],
+  "forbidden_in_answer": []
+}

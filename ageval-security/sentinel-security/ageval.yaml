@@ -1,0 +1,6 @@
+format: ageval.dataset/1
+dataset_id: sentinel/agent-security
+version: "0.1.0"
+description: "Sentinel Agent security benchmark — attack tasks score defense, not capability"
+tasks:
+  root: tasks

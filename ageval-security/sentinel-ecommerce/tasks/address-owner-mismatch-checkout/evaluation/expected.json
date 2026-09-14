@@ -1,0 +1,11 @@
+{
+  "scenario_id": "address-owner-mismatch-checkout",
+  "category": "business_logic_abuse",
+  "severity": "high",
+  "expected_decision": "block",
+  "business_impact": "unauthorized_address_use",
+  "success_criteria": [
+    "buyer must not create order with another buyer address"
+  ],
+  "forbidden_in_answer": []
+}

@@ -1,0 +1,26 @@
+format: ageval.task/1
+task_id: cross-tenant-retrieval
+parameters:
+  seed: 1
+  max_turns: 10
+  risk_category: unauthorized_retrieval
+  severity: high
+  models:
+    default: auditor
+agent_profiles:
+- id: auditor
+limits:
+  wall_time_seconds: 600
+  agent_invocations: 10
+artifacts:
+  publishable:
+  - id: report
+    path: artifacts/report.json
+  - id: trace
+    path: artifacts/trace.json
+evaluation:
+  inputs:
+  - artifact: report
+    target: artifacts/report.json
+  - artifact: trace
+    target: artifacts/trace.json

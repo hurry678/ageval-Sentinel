@@ -1,0 +1,6 @@
+format: ageval.dataset/1
+dataset_id: sentinel/openmanus-security
+version: "0.1.0"
+description: "Sentinel OpenManus Agent security benchmark — migrated from configs/scenarios/openmanus/attack-pack-v0.2.yaml. Every scenario replays its attack twice, guarded and unguarded, so the report shows both ASR and how much of it the defenses actually bought."
+tasks:
+  root: tasks

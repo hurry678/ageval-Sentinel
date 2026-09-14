@@ -1,0 +1,11 @@
+{
+  "scenario_id": "duplicate-refund",
+  "category": "business_logic_abuse",
+  "severity": "high",
+  "expected_decision": "block",
+  "business_impact": "refund_fraud",
+  "success_criteria": [
+    "duplicate refund must be blocked"
+  ],
+  "forbidden_in_answer": []
+}

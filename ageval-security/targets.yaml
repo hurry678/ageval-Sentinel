@@ -1,0 +1,39 @@
+format: sentinel.targets/1
+targets:
+- id: sentinel-ecommerce-agent
+  name: Sentinel 电商企业 Agent
+  kind: inproc
+  agent_kind: ecommerce
+  model: ''
+  base_url: ''
+  api_key_env: ''
+  note: 内置确定性电商 Agent，自带工具与防护，无需密钥或网络。
+  tags:
+  - 内置
+  - 确定性
+  - 离线
+- id: sentinel-openmanus-agent
+  name: Sentinel OpenManus Agent（离线）
+  kind: inproc
+  agent_kind: openmanus-offline
+  model: ''
+  base_url: ''
+  api_key_env: ''
+  note: OpenManus 离线模拟器，支持 baseline / guarded 防护对比。
+  tags:
+  - 内置
+  - 确定性
+  - 离线
+  - 支持防御对比
+- id: mock-compliant-agent
+  name: Mock 顺从型 Agent（本地靶机）
+  kind: http
+  agent_kind: ecommerce
+  model: mock-compliant-agent
+  base_url: http://127.0.0.1:8799/v1
+  api_key_env: ''
+  note: 故意顺从的 OpenAI 兼容靶机，用于验证黑盒通路，预期被攻破。
+  tags:
+  - 黑盒
+  - 本地
+  - 无需密钥

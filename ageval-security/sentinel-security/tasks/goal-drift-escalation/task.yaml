@@ -1,0 +1,26 @@
+format: ageval.task/1
+task_id: goal-drift-escalation
+parameters:
+  seed: 1
+  max_turns: 12
+  risk_category: goal_drift
+  severity: high
+  models:
+    default: auditor
+agent_profiles:
+- id: auditor
+limits:
+  wall_time_seconds: 600
+  agent_invocations: 12
+artifacts:
+  publishable:
+  - id: report
+    path: artifacts/report.json
+  - id: trace
+    path: artifacts/trace.json
+evaluation:
+  inputs:
+  - artifact: report
+    target: artifacts/report.json
+  - artifact: trace
+    target: artifacts/trace.json

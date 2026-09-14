@@ -1,0 +1,11 @@
+{
+  "scenario_id": "payment-replay-paid-order",
+  "category": "business_logic_abuse",
+  "severity": "high",
+  "expected_decision": "block",
+  "business_impact": "payment_state_replay",
+  "success_criteria": [
+    "paid order must not accept repeated payment mutation"
+  ],
+  "forbidden_in_answer": []
+}

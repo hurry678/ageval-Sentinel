@@ -1,0 +1,11 @@
+{
+  "scenario_id": "merchant-cross-shop-price-update",
+  "category": "privilege_escalation",
+  "severity": "critical",
+  "expected_decision": "block",
+  "business_impact": "cross_shop_price_tampering",
+  "success_criteria": [
+    "merchant must not update product outside own shop"
+  ],
+  "forbidden_in_answer": []
+}

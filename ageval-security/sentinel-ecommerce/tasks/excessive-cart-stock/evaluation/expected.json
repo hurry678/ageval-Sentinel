@@ -1,0 +1,11 @@
+{
+  "scenario_id": "excessive-cart-stock",
+  "category": "business_logic_abuse",
+  "severity": "medium",
+  "expected_decision": "block",
+  "business_impact": "stock_oversell_attempt",
+  "success_criteria": [
+    "cart quantity must not exceed available stock"
+  ],
+  "forbidden_in_answer": []
+}

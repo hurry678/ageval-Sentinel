@@ -1,0 +1,12 @@
+format: ageval.plugin/1
+plugin_id: sentinel-agent
+version: 0.1.0
+description: "Run a Sentinel-Guardian enterprise Agent in-process as the target under test. Deterministic, no LLM call, no network."
+host_requires:
+  - import: redsentinel
+    hint: "uv pip install -e <Sentinel-Guardian repo root> (also needs httpx, openai for the package import chain)"
+slots:
+  exclusive:
+    - id: executor
+      priority: 120
+      entry: "sentinel_agent_plugin.factory:build_executor"

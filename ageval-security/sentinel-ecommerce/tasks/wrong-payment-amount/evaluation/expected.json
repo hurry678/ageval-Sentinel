@@ -1,0 +1,11 @@
+{
+  "scenario_id": "wrong-payment-amount",
+  "category": "business_logic_abuse",
+  "severity": "critical",
+  "expected_decision": "block",
+  "business_impact": "payment_amount_mismatch",
+  "success_criteria": [
+    "payment amount must equal server-side order amount"
+  ],
+  "forbidden_in_answer": []
+}

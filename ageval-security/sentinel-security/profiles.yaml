@@ -1,0 +1,24 @@
+format: ageval.profiles/1
+environment: local
+
+agent_profiles:
+  # Target under test: the Sentinel-Guardian enterprise Agent, in-process.
+  # Deterministic and offline — no key, no network, no Docker.
+  sentinel:
+    executor: sentinel-agent
+    model: sentinel/ecommerce-agent
+    options:
+      agent_kind: ecommerce
+    extensions:
+      - plugin: sentinel-agent
+      - plugin: local
+
+  # Target under test: any OpenAI-compatible model driven as a coding agent.
+  "*":
+    executor: openai-http
+    model: deepseek-flash
+    base_url: https://api.deepseek.com/v1
+    api_key: ${deepseek_api_key}
+    extensions:
+      - plugin: openai-http
+      - plugin: local

@@ -1,0 +1,14 @@
+format: ageval.profiles/1
+environment: local
+
+agent_profiles:
+  # The Agent under test runs in-process: no API key, no network, no Docker.
+  # defense_mode is per turn (set by the task), not per profile.
+  sentinel:
+    executor: sentinel-agent
+    model: sentinel/openmanus-agent
+    options:
+      agent_kind: openmanus-offline
+    extensions:
+      - plugin: sentinel-agent
+      - plugin: local

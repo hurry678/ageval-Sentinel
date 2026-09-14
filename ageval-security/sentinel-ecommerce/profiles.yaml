@@ -1,0 +1,13 @@
+format: ageval.profiles/1
+environment: local
+
+agent_profiles:
+  # The Agent under test runs in-process: no API key, no network, no Docker.
+  sentinel:
+    executor: sentinel-agent
+    model: sentinel/ecommerce-agent
+    options:
+      agent_kind: ecommerce
+    extensions:
+      - plugin: sentinel-agent
+      - plugin: local

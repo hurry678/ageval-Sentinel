@@ -1,0 +1,6 @@
+format: ageval.dataset/1
+dataset_id: sentinel/ecommerce-security
+version: "0.1.0"
+description: "Sentinel ecommerce Agent security benchmark — migrated from configs/scenarios/ecommerce/attack-pack-v0.1.yaml. Each task pairs a clean baseline with one attack, so pass_rate is 1 - ASR and over-blocking shows up as a clean-side failure."
+tasks:
+  root: tasks
