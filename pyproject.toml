@@ -98,7 +98,6 @@ ignore = [
 addopts = "-m fast"
 testpaths = [
   "tests",
-  "frontend/tests",
   "experiments/tests",
 ]
 pythonpath = [

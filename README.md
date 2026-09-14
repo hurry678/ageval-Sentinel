@@ -148,10 +148,8 @@ C5 竞赛产品展示          已完成
 C6 提交与演示验收        进行中
 ```
 
-详细任务、验收条件和非目标见 [竞赛 Roadmap](ROADMAP.md)。
-
-当前开发焦点是使用真实模型凭据完成最终 OpenManus 现场验收，并录制 3–5 分钟
-演示视频；产品闭环、自动化测试、架构图、截图和桌面交付包已经完成。
+当前开发焦点是使用 `ageval-security/platform_api` 作为唯一平台后端，配套
+`ageval-security/platform_api/web` 控制台完成通用型 Agent 检测。
 
 ## 五分钟离线演示
 
@@ -321,11 +319,7 @@ src/redsentinel/
   adapters/      # 被测 Agent 适配器与注册表；platform_api inproc 目标从这里派生
   application/   # 历史审计应用服务和本地 /v1 API；保留为兼容，不再作为交付入口
   reporting/     # 结构化报告、HTML 和证据导出；被 platform_api 报告复用
-frontend/        # 历史审计工作区，已退役；当前控制台在 ageval-security/platform_api/web
-configs/         # Agent、场景和运行配置
-datasets/        # fixture、manifest 和数据划分
 tests/           # unit、contract、integration 和 regression
-docs/competition # 竞赛报告、答辩稿、复现和提交清单
 ```
 
 `src/redsentinel/research/`、`research/`、`configs/experiments/` 和 `docs/research/`
@@ -342,14 +336,7 @@ git diff --check
 
 ## 文档
 
-- [竞赛 Roadmap](ROADMAP.md)
-- [竞赛资料入口](docs/competition/README.md)
-- [竞赛项目报告](docs/competition/final-report.md)
-- [8 分钟答辩稿](docs/competition/defense-script-8min.md)
-- [复现说明](docs/competition/reproducibility.md)
-- [提交检查清单](docs/competition/submission-checklist.md)
-- [产品口径与边界](docs/product/README.md)
-- [C1-C4 代码审计与整改记录](docs/product/c1-c4-code-audit.md)
+本仓库聚焦通用型 Agent 检测平台运行代码。历史比赛材料、OpenSpec 过程记录和旧证据包未纳入当前精简仓库；平台启动与使用以本文档为准。
 
 ## 安全边界
 
