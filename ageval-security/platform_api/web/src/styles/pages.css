@@ -1,4 +1,26 @@
-/* ---------- attack path graph ---------- */
+/* ---------- custom suite wizard ---------- */
+.wizard { display: grid; gap: var(--space-5); }
+.wizard-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.wizard-steps button { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-subtle); color: var(--text-secondary); cursor: pointer; }
+.wizard-steps button span { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 999px; background: var(--surface-hover); color: var(--text-tertiary); font: 700 11px var(--mono); }
+.wizard-steps button.active { border-color: var(--primary); background: var(--primary-soft); color: var(--text); }
+.wizard-steps button.active span, .wizard-steps button.done span { background: var(--primary); color: var(--surface); }
+.wizard-steps button.done { border-color: var(--primary-border); color: var(--text); }
+.template-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+.template-card { display: grid; gap: 8px; min-height: 148px; padding: var(--space-4); border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-subtle); color: var(--text); text-align: left; cursor: pointer; }
+.template-card:hover, .template-card.active { border-color: var(--primary); background: var(--primary-soft); }
+.template-card strong { font-size: 15px; }
+.template-card span { color: var(--text-secondary); font-size: 12.5px; line-height: 1.6; }
+.template-card small { align-self: end; color: var(--text-tertiary); font: 11px var(--mono); }
+.node-picker-panel { display: grid; gap: 10px; margin-top: var(--space-5); }
+.step-editor { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: start; }
+.preview-grid { display: grid; gap: var(--space-5); }
+.preview-flow { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+.preview-flow section { display: grid; gap: 8px; padding: var(--space-4); border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-subtle); }
+.preview-flow ol { display: grid; gap: 8px; margin: 0; padding-left: 18px; color: var(--text-secondary); font-size: 12.5px; line-height: 1.6; }
+.validation-list { display: grid; gap: 6px; margin: var(--space-4) 0 0; padding: 10px 12px 10px 28px; border: 1px solid var(--danger-border); border-radius: var(--radius); background: var(--danger-soft); color: var(--danger); font-size: 12px; }
+.wizard-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
+
 .attack-graph { display: grid; grid-template-columns: repeat(8, minmax(120px, 1fr)); gap: 10px; overflow-x: auto; padding-bottom: 4px; }
 .attack-graph.compact { grid-template-columns: repeat(8, minmax(92px, 1fr)); }
 .attack-node-wrap { min-width: 0; display: flex; align-items: center; gap: 10px; }
@@ -109,10 +131,18 @@
   .dashboard-grid { grid-template-columns: 1fr; }
 }
 
+@media (max-width: 900px) {
+  .template-grid, .preview-flow { grid-template-columns: 1fr; }
+  .wizard-steps { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 700px) {
   .score-hero { grid-template-columns: 1fr; }
   .bubble { max-width: 100%; }
   .attack-graph { grid-template-columns: 1fr; }
   .attack-node-wrap { align-items: stretch; }
   .attack-edge { display: none; }
+  .wizard-steps { grid-template-columns: 1fr; }
+  .wizard-actions { justify-content: stretch; }
+  .wizard-actions .button { flex: 1; justify-content: center; }
 }
