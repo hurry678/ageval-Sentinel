@@ -27,7 +27,9 @@ from fastapi.responses import FileResponse, PlainTextResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
 from platform_api import PLATFORM_VERSION
+from platform_api.attack_path import build_attack_path
 from platform_api.config import WEB_DIST, ensure_state
+from platform_api.custom_suites import validate_custom_suite, write_custom_suite
 from platform_api.probe import probe
 from platform_api.reports import build_report, compare, replay, report_markdown
 from platform_api.runs import cancel_run, events_since, list_runs, load_run, start_run
@@ -120,6 +122,20 @@ def create_app() -> FastAPI:
             raise HTTPException(status_code=404, detail="scenario not found")
         return found
 
+    @app.post("/api/custom-suites/validate")
+    def check_custom_suite(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+        found, reason = validate_custom_suite(payload)
+        if found is None:
+            raise HTTPException(status_code=422, detail=reason)
+        return {"ok": True, "suite": found}
+
+    @app.post("/api/custom-suites")
+    def create_custom_suite(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+        found, reason = write_custom_suite(payload)
+        if found is None:
+            raise HTTPException(status_code=422, detail=reason)
+        return found
+
     # ---------------------------------------------------------------- runs
 
     @app.get("/api/runs")
@@ -144,6 +160,13 @@ def create_app() -> FastAPI:
         if record is None:
             raise HTTPException(status_code=404, detail="run not found")
         return record.summary()
+
+    @app.get("/api/runs/{run_id}/attack-path")
+    def read_attack_path(run_id: str) -> dict[str, Any]:
+        found = build_attack_path(run_id)
+        if found is None:
+            raise HTTPException(status_code=404, detail="run not found")
+        return found
 
     @app.post("/api/runs/{run_id}/cancel")
     def stop_run(run_id: str) -> dict[str, Any]:

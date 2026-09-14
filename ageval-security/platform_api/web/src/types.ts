@@ -289,6 +289,22 @@ export type Replay = {
   phases: Phase[]
 }
 
+export type CustomSuiteInput = {
+  suite_id: string
+  task_id: string
+  title: string
+  description: string
+  category: string
+  severity: Severity
+  nodes: string[]
+  business_flow: string
+  expected_decision: 'block' | 'allow' | 'warn' | 'review'
+  clean_steps: ScriptStep[]
+  controlled_steps: ScriptStep[]
+  success_criteria: string[]
+  business_impact: string
+}
+
 export type CompareRow = {
   run_id: string
   target_name: string
@@ -306,4 +322,53 @@ export type CompareRow = {
   baseline_asr: number | null
   defense_reduction: number | null
   forensic_hit_rate: number | null
+}
+
+export type AttackPathNode = {
+  id: string
+  label: string
+  covered: boolean
+  status: 'PASS' | 'FAIL' | 'ERROR' | 'running' | 'pending' | 'uncovered'
+}
+
+export type AttackPathEdge = {
+  source: string
+  target: string
+  count: number
+}
+
+export type AttackPathTask = {
+  task_id: string
+  attempts: RunTaskState[]
+  status: TaskStatus | 'pending'
+  category: string
+  severity: Severity
+  nodes: string[]
+  expected_decision: string
+  has_replay: boolean
+  has_report_case: boolean
+}
+
+export type AttackPathEvent = {
+  seq: number
+  kind: string
+  task_id?: string
+  attempt?: number
+  status?: string
+  at?: number
+}
+
+export type AttackPath = {
+  run_id: string
+  suite_id: string
+  target_id: string
+  target_name: string
+  status: RunStatus
+  ready: boolean
+  summary_ready: boolean
+  report_ready: boolean
+  nodes: AttackPathNode[]
+  edges: AttackPathEdge[]
+  tasks: AttackPathTask[]
+  events: AttackPathEvent[]
 }

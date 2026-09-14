@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, CheckCircle2, MinusCircle } from 'lucide-react'
+import { ArrowRight, CheckCircle2, MinusCircle, PlusCircle } from 'lucide-react'
 import { api } from '../api'
 import { useLoad } from '../hooks'
 import { percent } from '../format'
@@ -17,6 +17,7 @@ export default function Suites() {
         eyebrow="Suites"
         title="测试套件"
         description="每个套件是一组带 gold 判据的业务场景，覆盖 N1–N8 攻击面节点，可选支持防御增益（defense delta）对照。"
+        actions={<Link className="button primary" to="/suites/custom/new"><PlusCircle size={15} />新建自定义流程</Link>}
       />
       <AsyncState loading={suites.loading} error={suites.error} empty={!list.length} emptyText="未发现测试套件">
         <div className="grid cols-2">

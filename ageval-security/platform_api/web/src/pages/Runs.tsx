@@ -67,8 +67,8 @@ export default function Runs() {
               </thead>
               <tbody>
                 {list.map((run) => (
-                  <tr key={run.run_id}>
-                    <td>
+                  <tr key={run.run_id} className="clickable" onClick={() => navigate(`/runs/${run.run_id}`)}>
+                    <td onClick={(event) => event.stopPropagation()}>
                       <input
                         type="checkbox"
                         aria-label={`选择 ${run.run_id}`}

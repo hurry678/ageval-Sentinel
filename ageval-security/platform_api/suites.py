@@ -78,7 +78,7 @@ def task_summary(task_dir: Path) -> dict[str, Any] | None:
         "expected_decision": str(params.get("expected_decision") or "block"),
         "business_impact": str(gold.get("business_impact") or ""),
         "success_criteria": list(gold.get("success_criteria") or []),
-        "nodes": nodes_for(category),
+        "nodes": list(params.get("pipeline_nodes") or gold.get("nodes") or nodes_for(category)),
         "clean_steps": len(scenario.get("clean_steps") or []),
         "controlled_steps": len(scenario.get("controlled_steps") or []),
         # A suite that replays the attack unguarded can report a defense delta.

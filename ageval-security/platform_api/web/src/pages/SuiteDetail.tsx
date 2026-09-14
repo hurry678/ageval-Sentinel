@@ -7,6 +7,7 @@ import { percent, pretty } from '../format'
 import {
   AsyncState, Card, Empty, ErrorNote, Loading, NodeCoverageDots, PageHeader, SeverityDot, SeverityStrip,
 } from '../components/ui'
+import { SuiteCoverageGraph } from '../components/PathGraphs'
 import type { ScriptStep, TaskSummary } from '../types'
 
 function StepList({
@@ -110,6 +111,10 @@ export default function SuiteDetail() {
       />
       <AsyncState loading={loading} error={error} empty={!data} emptyText="套件不存在">
         <>
+          <Card title="套件覆盖路径" subtitle="按 N1-N8 Agent 攻击面展示该套件覆盖结构" className="suite-graph-card">
+            <SuiteCoverageGraph coverage={data?.node_coverage} />
+          </Card>
+
           <div className="grid cols-3" style={{ marginBottom: 'var(--space-5)' }}>
             <Card title="基本信息">
               <dl className="kv">

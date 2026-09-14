@@ -23,19 +23,28 @@ TARGETS_FILE = WORKSPACE / "targets.yaml"
 STATE_ROOT = WORKSPACE / ".platform"
 RUNS_STATE = STATE_ROOT / "runs"
 PROFILES_STATE = STATE_ROOT / "profiles"
+CUSTOM_SUITES_ROOT = STATE_ROOT / "custom-suites"
 
 WEB_DIST = PLATFORM_ROOT / "web" / "dist"
 
 
 def suite_roots() -> list[Path]:
     """Every ageval dataset in the workspace, discovered by its manifest."""
-    return sorted(
+    roots = [
         path.parent
         for path in WORKSPACE.glob("*/ageval.yaml")
         if (path.parent / "tasks").is_dir()
-    )
+    ]
+    custom_root = WORKSPACE / ".platform" / "custom-suites"
+    if custom_root.is_dir():
+        roots.extend(
+            path.parent
+            for path in custom_root.glob("*/ageval.yaml")
+            if (path.parent / "tasks").is_dir()
+        )
+    return sorted(roots, key=lambda path: path.name)
 
 
 def ensure_state() -> None:
-    for path in (STATE_ROOT, RUNS_STATE, PROFILES_STATE):
+    for path in (STATE_ROOT, RUNS_STATE, PROFILES_STATE, CUSTOM_SUITES_ROOT):
         path.mkdir(parents=True, exist_ok=True)

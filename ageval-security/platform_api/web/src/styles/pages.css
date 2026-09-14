@@ -1,4 +1,19 @@
-/* ---------- run detail: live ---------- */
+/* ---------- attack path graph ---------- */
+.attack-graph { display: grid; grid-template-columns: repeat(8, minmax(120px, 1fr)); gap: 10px; overflow-x: auto; padding-bottom: 4px; }
+.attack-graph.compact { grid-template-columns: repeat(8, minmax(92px, 1fr)); }
+.attack-node-wrap { min-width: 0; display: flex; align-items: center; gap: 10px; }
+.attack-node { min-width: 104px; min-height: 104px; display: grid; gap: 5px; align-content: center; padding: 12px; border: 1px solid var(--border-strong); border-radius: var(--radius); background: var(--surface-subtle); text-align: center; }
+.attack-node strong { font: 700 18px var(--mono); }
+.attack-node span { color: var(--text-secondary); font-size: 11px; line-height: 1.35; }
+.attack-node em { color: var(--text-tertiary); font: 10px var(--mono); font-style: normal; }
+.attack-node.covered { box-shadow: inset 0 0 0 1px var(--success-border); }
+.attack-node.s-pass { border-color: var(--success-border); background: var(--success-soft); }
+.attack-node.s-fail, .attack-node.s-error { border-color: var(--danger-border); background: var(--danger-soft); }
+.attack-node.s-running { border-color: var(--info-border); background: var(--info-soft); }
+.attack-edge { flex: 1 0 18px; height: 2px; background: var(--border-strong); }
+.node-picker { display: flex; flex-wrap: wrap; gap: 8px; }
+.node-picker .node-dot { cursor: pointer; }
+
 .task-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
 .task-cell { min-width: 0; display: grid; gap: 4px; padding: 9px 11px; border: 1px solid var(--border-strong); border-left-width: 3px; border-radius: 10px; background: var(--surface-subtle); }
 .task-cell strong { overflow: hidden; font: 11.5px var(--mono); text-overflow: ellipsis; white-space: nowrap; }
@@ -97,4 +112,7 @@
 @media (max-width: 700px) {
   .score-hero { grid-template-columns: 1fr; }
   .bubble { max-width: 100%; }
+  .attack-graph { grid-template-columns: 1fr; }
+  .attack-node-wrap { align-items: stretch; }
+  .attack-edge { display: none; }
 }

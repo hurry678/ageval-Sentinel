@@ -1,5 +1,5 @@
 import type {
-  CompareRow, Health, ProbeResult, Replay, Report, RunSummary, Suite, Target, TargetInput, TaskDetail,
+  AttackPath, CompareRow, CustomSuiteInput, Health, ProbeResult, Replay, Report, RunSummary, Suite, Target, TargetInput, TaskDetail,
 } from './types'
 
 export class ApiError extends Error {
@@ -42,6 +42,13 @@ export const api = {
   getSuite: (suiteId: string) => request<Suite>(`/api/suites/${seg(suiteId)}`),
   getTask: (suiteId: string, taskId: string) =>
     request<TaskDetail>(`/api/suites/${seg(suiteId)}/tasks/${seg(taskId)}`),
+  validateCustomSuite: (input: CustomSuiteInput) =>
+    request<{ ok: boolean; suite: CustomSuiteInput }>('/api/custom-suites/validate', {
+      method: 'POST',
+      body: JSON.stringify(input),
+    }),
+  createCustomSuite: (input: CustomSuiteInput) =>
+    request<Suite>('/api/custom-suites', { method: 'POST', body: JSON.stringify(input) }),
 
   listRuns: () => request<{ runs: RunSummary[] }>('/api/runs'),
   createRun: (input: {
@@ -51,6 +58,7 @@ export const api = {
     max_concurrent?: number
   }) => request<RunSummary>('/api/runs', { method: 'POST', body: JSON.stringify(input) }),
   getRun: (runId: string) => request<RunSummary>(`/api/runs/${seg(runId)}`),
+  getRunAttackPath: (runId: string) => request<AttackPath>(`/api/runs/${seg(runId)}/attack-path`),
   cancelRun: (runId: string) =>
     request<{ cancelled: boolean }>(`/api/runs/${seg(runId)}/cancel`, { method: 'POST' }),
 

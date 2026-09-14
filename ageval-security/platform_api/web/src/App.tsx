@@ -11,6 +11,7 @@ import Overview from './pages/Overview'
 import Targets from './pages/Targets'
 import Suites from './pages/Suites'
 import SuiteDetail from './pages/SuiteDetail'
+import CustomSuiteBuilder from './pages/CustomSuiteBuilder'
 import NewRun from './pages/NewRun'
 import Runs from './pages/Runs'
 import RunDetail from './pages/RunDetail'
@@ -99,6 +100,7 @@ export default function App() {
         <Route index element={<Overview />} />
         <Route path="targets" element={<Targets />} />
         <Route path="suites" element={<Suites />} />
+        <Route path="suites/custom/new" element={<CustomSuiteBuilder />} />
         <Route path="suites/:suiteId" element={<SuiteDetail />} />
         <Route path="runs" element={<Runs />} />
         <Route path="runs/new" element={<NewRun />} />
