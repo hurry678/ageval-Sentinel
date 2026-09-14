@@ -212,7 +212,17 @@ redsentinel evaluate --output-dir artifacts --seed 42
 平台运行在浙大 **ZJU-REAL/ageval** 评测引擎之上。当前工作区约定把 ageval checkout 放在
 `ageval-security/ageval`（本地版本 `0.8.0`）；该目录是外部依赖，未纳入本仓库版本控制。
 
-首次准备：
+首次准备（一键）：
+
+```bash
+scripts/platform-setup.bat   # Windows
+bash scripts/platform-setup.sh # macOS / Linux / WSL
+```
+
+脚本会安装 Sentinel Python 依赖、拉取 `ZJU-REAL/ageval`、安装 ageval CLI、安装
+`sentinel-agent` 插件，并安装控制台 Node 依赖。
+
+手动准备：
 
 ```bash
 python -m pip install -e ".[product,dev]"
